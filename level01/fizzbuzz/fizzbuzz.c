@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_word.c                                       :+:      :+:    :+:   */
+/*   fizzbuzz.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:29:36 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/21 15:38:35 by pfalli           ###   ########.fr       */
+/*   Created: 2024/02/21 15:34:45 by pfalli            #+#    #+#             */
+/*   Updated: 2024/02/21 16:13:15 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 
-//	how to use **argv or *argv[]
+// how to calculate multiples
 
-int	main(int argc, char **argv)
+void ft_putchar(char c)
 {
-	int	i;
+	write (1, &c, 1);
+}
 
-	i = 0;
-	if (argc == 2)
-	{
-		while (argv[1][i] == 32 || argv[1][i] == 9)
-			i++;
-		while ((argv[1][i] != 32 && argv[1][i] != 9) && argv[1][i])
-		{
-			write(1, &argv[1][i], 1);
-			i++;
-		}
-	}
-	write(1, "\n", 1);
+void ft_putnumber(int num)
+{
+	if (num > 9)
+		ft_putnumber(num / 10);
+	ft_putchar(num % 10 + '0');
 }
 
 
-//	int main(int argc, char **argv, char **environment)
-//	{
-//		int i;
-//	
-//		i = 0;
-//		while (environment)
-//			printf(" %s\n", environment[i++]);
-//	}
-//	
+int main (void)
+{
+	int i = 1;
+	
+	while (i <= 100)
+	{
+		if ( i % 3 == 0 && i % 5 == 0)
+			write(1, "fizzbuzz", 8);
+		else if (i % 3 == 0)
+			write(1, "fizz", 4);
+		else if (i % 5 == 0)
+			write(1, "buzz", 4);
+		else
+			ft_putnumber(i);
+		write(1, "\n", 1);
+		i++;
+	}
+}
