@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   last_word.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 16:31:15 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/23 16:31:15 by pfalli           ###   ########.fr       */
+/*   Created: 2024/02/26 14:13:14 by pfalli            #+#    #+#             */
+/*   Updated: 2024/02/26 14:13:14 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-int	ft_atoi(const char *str)
+int main (int argc, char **argv)
 {
-    int result = 0;
-    int neg = 1;
+    int i = 0;
+    int j = 0;
 
-    while (*str && (*str >= 9 && *str <= 13))
-        str++;
-    if (*str == '-')
-        neg = -1;
-    if (*str == '-' || *str == '+')
-        str++;
-    while ((*str >= '0' && *str <= '9'))
+    if (argc == 2)
     {
-        result = result * 10 + ( *str - '0');
-        str++;
+        while (argv[1][i])
+        {
+            if (argv[1][i] == ' ' && (argv[1][i + 1] >= 33 && argv[1][i + 1] <= 126))
+                j = i + 1;
+            i++;
+        }
+        while (argv[1][j] >= 33 && argv[1][j] <= 126)
+        {
+            write (1, &argv[1][j], 1);
+            j++;
+        }
     }
-    return (neg * result);
-}
-
-int main (void)
-{
-    int i = ft_atoi("1234");
-    printf("%i", i);
+    write (1, "\n", 1);
     return(0);
 }
