@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 16:48:23 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/21 16:56:18 by pfalli           ###   ########.fr       */
+/*   Created: 2024/02/22 10:06:33 by pfalli            #+#    #+#             */
+/*   Updated: 2024/02/22 10:09:33 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_putstr(char *str)
+int	ft_strlen(char *str)
 {
 	int i = 0;
 
-	while (str[i] != 0)
-	{
-		write(1, &str[i], 1);
+	while (str[i] != '\0')
 		i++;
-	}
-	
+	return(i);
 }
 
-int main(void)
+int main (void)
 {
-	ft_putstr("hello");
+	printf("%d", ft_strlen("ciao"));
 }

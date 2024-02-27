@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 16:48:23 by pfalli            #+#    #+#             */
-/*   Updated: 2024/02/21 16:56:18 by pfalli           ###   ########.fr       */
+/*   Created: 2024/02/22 10:10:07 by pfalli            #+#    #+#             */
+/*   Updated: 2024/02/22 10:16:27 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_putstr(char *str)
+void	ft_swap(int *a, int *b)
 {
-	int i = 0;
+	int temp = *a;
 
-	while (str[i] != 0)
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	
+	*a = *b;
+	*b = temp;
 }
 
 int main(void)
 {
-	ft_putstr("hello");
+	int a = 55;
+	int b = 66;
+	ft_swap(&a, &b);
+	printf("a = %d mentre b = %d", a, b);
 }
